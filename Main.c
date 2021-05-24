@@ -207,7 +207,7 @@ int main(int pernyataan, char *argument[]){
                         "\n3. Waktu anda hanya 15 detik dalam 1 soal.\n4. Jika waktu habis sebelum anda menjawab, anda tereliminasi secara otomatis."
                         "\n5. Waktu tidak ditampilkan, maka gunakan sebaik mungkin."
                         "\n6. Jika anda kalah, semua uang yang anda dapatkan akan hangus."
-                        "\n6. Terdapat optional tambahan seperti 50:50 dan tambahan waktu 5 detik, gunakan dengan bijak.");
+                        "\n7. Terdapat optional tambahan seperti 50:50 dan tambahan waktu 5 detik, gunakan dengan bijak.");
                     printf("\n\n Tekan Y  untuk memulai permainan");
                     printf("\n Tekan N untuk kembali pada menu awal!\n=> ");
                         if (toupper(getch()) == 'Y') {
