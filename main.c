@@ -29,7 +29,7 @@ int main(int pernyataan, char *argument[]){
 
         mainmenu:
             system ("color 07"); //ini input untuk memberi warna pada tulisan, jelas warnanya liat guguel aja. guna windows.h
-            printf("1. Sign-in\n2. Log-in\n3. Kredit\n4. Keluar\n\n");//model cla
+            printf("1. Sign-in\n2. Log-in\n3. Keluar\n\n");//model cla
             printf("Masukkan pilihan anda: ");
             scanf("%i",&opsie);
 
@@ -43,24 +43,15 @@ int main(int pernyataan, char *argument[]){
                 printf("\n  w-w Silakan menduduki kursi panas anda. w-w\n");
                 printf("\n-----------------------------------------------------\n");
                 return EXIT_FAILURE;
-            }else if(opsie == 4){//program keluar
+            }else if(opsie == 3){//program keluar
                 system("cls");
                 printf("\n-----------------------------------------------------\n\n");
                 printf("\t TERIMAKASIH SUDAH BERKUNJUNG!!\n");
                 printf("\n-----------------------------------------------------\n");
                 return EXIT_FAILURE;
-            }else if(opsie==3){
-                system("cls");
-                printf("\n\t\tProgram ini dikembangkan oleh :\n\n"
-                  "1. Ainal Fajri M.\t|\t2008107010053\n" //tampilan kredit
-                  "2. M. Khawaril Putra\t|\t2008107010038\n"
-                  "3. Naufal Angkasah\t|\t2008107010018\n");
-                printf("\n--------------------------------------------------\n\n\n");
-                getch();
-                goto mainmenu;
             }else if(opsie==1){//program untuk sign-in
                 do{
-                    //system("cls");
+                    system("cls");
                     if(c == ' ') {
                         printf("Username yang anda masukkan salah!\n");
                         printf("|Username tidak terdapat spasi|\n");
@@ -110,7 +101,7 @@ int main(int pernyataan, char *argument[]){
                     printf("\nMaaf, akun ini telah ada\nMohon gunakan username dan password yang berbeda\n");
                     printf("Klik 'enter' untuk kembali ke menu utama\n");
                     getch();
-                    //system("cls");
+                    system("cls");
                     goto mainmenu;
                 }
                 //program untuk menulis ke text binary
@@ -121,7 +112,7 @@ int main(int pernyataan, char *argument[]){
                 printf("\nLogin anda berhasil!");
                 printf("\nGunakan akun %s untuk login game",username); //gak pake & karena pointer
                 getchar();
-                //system("cls");
+                system("cls");
                 goto mainmenu;
             }
     }else if(pernyataan == 2){
@@ -167,7 +158,8 @@ int main(int pernyataan, char *argument[]){
             system("cls");
             system ("color 07") ;
             printf("\n-----------------------------------------------------\n");
-            printf("\n   Selamat telah menjadi bagian dari game ini!\n    Tetap tenang dan waspada\n");
+            printf("\n   Selamat telah menjadi bagian dari game ini!\n\t   Tetap tenang dan waspada\n");
+            printf("\n-----------------------------------------------------\n");
             getchar();
         }else
         {
@@ -178,42 +170,56 @@ int main(int pernyataan, char *argument[]){
             return EXIT_FAILURE;
         }
 
-        system("cls");
-        system ("color 08") ;
+       
+        system ("color 09") ;
 
-        printf("\nWelcome %s!\n",username);
+        printf("Welcome %s!\n\n Sudah siap bermain? Tekan enter",username);
         getchar();
         //mulai permainan
         menuutama:
             system ("color 0f");
             system("cls");
-            printf("\t\t\t\t\t+====================================================================+\t\t\t\t\t\n");
-            printf("\t\t\t\t\t|                              WHO WANTS                             |\t\t\t\t\t\n");
-            printf("\t\t\t\t\t|                          TO BE MILLIONAIRE                         |\t\t\t\t\t\n");
-            printf("\t\t\t\t\t+====================================================================+\t\t\t\t\t\n");
+            printf("\t+====================================================================+\t\t\t\t\t\n");
+            printf("\t|                              WHO WANTS                             |\t\t\t\t\t\n");
+            printf("\t|                          TO BE MILLIONAIRE                         |\t\t\t\t\t\n");
+            printf("\t+====================================================================+\t\t\t\t\t\n");
             printf("\n");
-            printf("\n\t\t\t\t\t > Tekan M untuk memulai permainan");
-            printf("\n\t\t\t\t\t > Tekan R peraturan");
-            printf("\n\t\t\t\t\t > Tekan Q untuk keluar");
-            printf("\n\t\t\t\t-----------------------------------------------------------------------------------------\n");
+            printf("\n\t\t > Tekan M untuk memulai permainan");
+            printf("\n\t\t > Tekan K Kredit");
+            printf("\n\t\t > Tekan Q untuk keluar");
+            printf("\n-----------------------------------------------------------------------------------------\n");
+            printf("=> ");
             pilmu = toupper(getch());
-            if (pilmu=='R'){
-                  printf("\n\tketentuan Memainkan game\n" //Syarat permainan.
+            if (pilmu == 'K') {//nama pengembang
+                system("cls");
+                printf("\n\tProgram ini dikembangkan oleh:\n\n"
+                    "1. Ainal Fajri M.\t|\t2008107010053\n" //tampilan kredit
+                    "2. M. Khawaril Putra\t|\t2008107010038\n"
+                    "3. Naufal Angkasah\t|\t2008107010018\n");
+                printf("\n=> ");
+                getch();
+                goto menuutama;
+            }else if (pilmu == 'Q')                                 //pilihan cabut dari program
+                exit(1);
+            else if (pilmu == 'M') {
+                hitungan=0,pinalty = 1,tambahanwaktu = 1;
+                sebelummulai:
+                    system("cls");
+                    printf("\tketentuan Memainkan game\n" //Syarat permainan.
                         "\n1. Anda hanya memiliki 1 nyawa.\n2. Anda punya kesempatan untuk memilih lanjut atau keluar dari game."
                         "\n3. Waktu anda hanya 15 detik dalam 1 soal.\n4. Jika waktu habis sebelum anda menjawab, anda tereliminasi secara otomatis."
                         "\n5. Waktu tidak ditampilkan, maka gunakan sebaik mungkin."
                         "\n6. Jika anda kalah, semua uang yang anda dapatkan akan hangus."
-                        "\n6. Terdapat optional tambahan seperti 50:50 dan tambahan waktu 5 detik, gunakan dengan bijak.");
-                    printf("\n\nTekan enter untuk memulai permainan");
-                    getch();
-                    goto menuutama;
-            }else if (pilmu == 'Q')                                 //pilihan cabut dari program
-                exit(1);
-            else if (pilmu == 'M') {
-                hitungan=0,pinalty = 1,tambahanwaktu = 1;}
-                goto mulaisaja;
-                
-                    system("cls");
+                        "\n7.. Terdapat optional tambahan seperti 50:50 dan tambahan waktu 5 detik, gunakan dengan bijak.");
+                    printf("\n\n Tekan Y  untuk memulai permainan");
+                    printf("\n Tekan N untuk kembali pada menu awal!\n=> ");
+                        if (toupper(getch()) == 'Y') {
+                            goto mulaisaja;
+                        } else if (toupper(getch()) == 'N') {
+                            goto menuutama;
+                        }else{
+                            goto sebelummulai;
+                        }
                     mulaisaja:
                         for (i = 0; i < 15; i++) { //for loop untuk ubah soal otomatis
                             system("cls"); //membuat tampilan hanya soal sedang berlangsung yang nampak, sisanya akan tertimpa
@@ -241,7 +247,6 @@ int main(int pernyataan, char *argument[]){
                                         hitungan=hitungan+50000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \nd. Hewan bersel satu yang dapat dilihat dengan mikroskop");
                                             }else{
                                                 break;
                                             }
@@ -273,7 +278,7 @@ int main(int pernyataan, char *argument[]){
                                         }
                                 case 2:
                                     system ("color 07") ;
-                                    //system("cls");
+                                    system("cls");
                                     mulaisaja = time (NULL);
                                     printf("\nJika anda benar, maka anda mendapatkan uang sebesar Rp500.000\n");
                                     printf("2. Nama lain dari \"Basemen\" adalah? \n");
@@ -297,7 +302,6 @@ int main(int pernyataan, char *argument[]){
                                             hitungan+=500000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \nb. Rubanah");
                                             } else {
                                                 break;
                                             }
@@ -328,7 +332,7 @@ int main(int pernyataan, char *argument[]){
                                         }
                                 case 3:
                                     system ("color 07") ;
-                                    //system("cls");
+                                    system("cls");
                                     mulaisaja = time (NULL);
                                     printf("\nJika anda benar, maka anda mendapatkan uang sebesar Rp1.000.000\n\n");//klo bisa jangan disingkat:)
                                     printf("3. A bat and a ball cost $1.10 in total. The bat costs a dollar more than the ball\nHow much does the ball costs?\n");
@@ -354,7 +358,6 @@ int main(int pernyataan, char *argument[]){
                                             hitungan+=1000000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \nc. $0.5");
                                             } else {
                                                 break;
                                             }
@@ -398,7 +401,7 @@ int main(int pernyataan, char *argument[]){
                                         end = time (NULL);
                                         detiks = end - mulaisaja;
                                         if (detiks > 15+nambah){
-                                            //system("cls");
+                                            system("cls");
                                             printf ("Maaf, anda telat menjawab.\n");
                                             getchar();
                                             goto nilaiuser2;//sampai sini
@@ -408,7 +411,6 @@ int main(int pernyataan, char *argument[]){
                                             hitungan+=1500000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \na. Bed");
                                             } else {
                                                 break;
                                             }
@@ -436,7 +438,7 @@ int main(int pernyataan, char *argument[]){
                                         }
                                 case 5:
                                     system ("color 07") ;
-                                    //system("cls");
+                                    system("cls");
                                     mulaisaja = time (NULL);
                                     printf("\nJika anda benar, maka anda mendapatkan uang sebesar Rp2.000.000\n\n");//klo bisa jangan disingkat:)
                                     printf("5. Manakah rumus kimia dari \"Natrium Klorida\"?\n");
@@ -460,7 +462,6 @@ int main(int pernyataan, char *argument[]){
                                             hitungan+=2000000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \nd. NaCl");
                                             } else {
                                                 break;
                                             }
@@ -490,7 +491,7 @@ int main(int pernyataan, char *argument[]){
                                         }
                                 case 6:
                                     system ("color 07") ;
-                                    //system("cls");
+                                    system("cls");
                                     mulaisaja = time (NULL);
                                     printf("\nJika anda benar, maka anda mendapatkan uang sebesar Rp5.000.000\n\n");
                                     printf("6. Dalam penggunaan mobil matic, manakah fungsi gigi yang tepat untuk tanjakan yang tidak terlalu curam? \n"
@@ -514,7 +515,6 @@ int main(int pernyataan, char *argument[]){
                                             hitungan+=5000000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \nd. 2");
                                             } else {
                                                 break;
                                             }
@@ -543,7 +543,7 @@ int main(int pernyataan, char *argument[]){
                                         }
                                 case 7:
                                     system ("color 07") ;
-                                    //system("cls");
+                                    system("cls");
                                     mulaisaja = time (NULL);
                                     printf("\nJika anda benar, maka anda mendapatkan uang sebesar Rp10.000.000\n\n");
                                     printf("7. Hewan apakah yang mempunyai nama latin \"Cimicidae\"\n"
@@ -567,7 +567,6 @@ int main(int pernyataan, char *argument[]){
                                             hitungan+=10000000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \nb. Kutu Busuk");
                                             } else {
                                                 break;
                                             }
@@ -597,7 +596,7 @@ int main(int pernyataan, char *argument[]){
                                         }
                                 case 8:
                                     system ("color 07") ;
-                                    //system("cls");
+                                    system("cls");
                                     mulaisaja = time (NULL);
                                     printf("\nJika anda benar, maka anda mendapatkan uang sebesar Rp20.000.000\n\n");//klo bisa jangan disingkat:)
                                     printf("8. Kota apakah yang dijuluki dengan 'Kota Kembang'?\n"
@@ -621,7 +620,6 @@ int main(int pernyataan, char *argument[]){
                                             hitungan+=20000000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \nc. Bandung");
                                             } else {
                                                 break;
                                             }
@@ -651,7 +649,7 @@ int main(int pernyataan, char *argument[]){
                                         }
                                 case 9:
                                     system ("color 07") ;
-                                    //system("cls");
+                                    system("cls");
                                     mulaisaja = time (NULL);
                                     printf("\nJika anda benar, maka anda mendapatkan uang sebesar Rp.25.000.000\n\n");//klo bisa jangan disingkat:)
                                     printf("9. Ibokuta negara Slovakia adalah?\n"
@@ -676,7 +674,6 @@ int main(int pernyataan, char *argument[]){
                                             hitungan+=25000000;
                                             if (toupper(getch()) == 'N') {
                                                 goto nilaiuser;
-                                                printf("\n\nBenar! Jawaban adalah: \nb. Bratislava");
                                             } else {
                                                 break;
                                             }
@@ -706,7 +703,7 @@ int main(int pernyataan, char *argument[]){
                                         }
                                 case 10:
                                     system ("color 07") ;
-                                    //system("cls");
+                                    system("cls");
                                     mulaisaja = time (NULL);
                                     printf("\nJika anda benar, maka anda mendapatkan uang sebesar Rp.50.000.000\n\n");
                                     printf("10. Penemu bilangan bulat adalah?\n"
@@ -725,14 +722,10 @@ int main(int pernyataan, char *argument[]){
                                         goto nilaiuser2;//sampai sini
                                         }
                                         if (tolower(f) == 'a') {
-                                            jawabsaja();
                                             hitungan+=50000000;
-                                            if(toupper(getch())=='N'){
-                                              goto nilaiuser;
-                                              printf("\n\nBenar! Jawaban adalah: \na. Leonardo Da Pisa");
-                                            } else{
-                                              break;
-                                            }
+                                            printf("\nALL PERFECT\n");
+                                            goto nilaiuser;
+
                                         }else if(tolower(f)=='e') {
                                             if (pinalty == 1) {
                                                 printf("\n50:50 telah dipakai\n");
@@ -760,7 +753,7 @@ int main(int pernyataan, char *argument[]){
                             }
                         }
                 }else{
-                    goto menuutama;
+                    goto menuutama;}
                 nilaiuser:             // Hitungan semua nilai pemain
                     nilai(hitungan,1);
                     goto menuutama;
@@ -800,15 +793,15 @@ void nilai(int n, int n2){
         nilaiuser=n;
         printf("\n\n\t\t$$$$$$$$$$$$$=== SELAMAT ===$$$$$$$$$$$$$");
         printf("\n\n\t Anda menang!!! Anda berhak mendapatkan uang virtual senilai Rp%d",nilaiuser); //nilai untuk pemain yang menang
-        printf(" \n\n\tTekan apa saja untuk kembali ke halaman utama");
+        printf(" \n\n\t\t    Tekan apa saja untuk kembali ke halaman utama");
         printf("\n-----------------------------------------------------------------------------------------\n");
         getch();
     } else if (n2==2){
         system("cls");
         system ("color 0c") ;
         printf("\n\n\t\t$$$$$$$$$$$$$=== GAME BERAKHIR ===$$$$$$$$$$$$$");
-        printf("\n\n\t Anda Ceroboh! Membuat Anda tidak mendapatkan sepeser pun!!\n\t Dah boleh pulang, silakan!"); //untuk user game over
-        printf(" \n\n\tTekan apa saja untuk kembali ke halaman utama");
+        printf("\n\n\t Anda Ceroboh! Membuat Anda tidak mendapatkan sepeser pun!!\n\t\t      Dah boleh pulang, silakan!"); //untuk user game over
+        printf(" \n\n\t\tTekan apa saja untuk kembali ke halaman utama");
         getch();
         printf("\n-----------------------------------------------------------------------------------------\n");
     }
